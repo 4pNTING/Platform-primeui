@@ -5,10 +5,11 @@ import { CreateProductUseCase } from '../../domain/usecases/CreateProductUseCase
 import { UpdateProductUseCase } from '../../domain/usecases/UpdateProductUseCase';
 import { DeleteProductUseCase } from '../../domain/usecases/DeleteProductUseCase';
 import { ProductRepositoryImpl } from '../../data/repositories/ProductRepositoryImpl';
-import { MockProductDataSource } from '../../data/datasources/MockProductDataSource';
+import { ProductRemoteDataSource } from '../../data/datasources/ProductRemoteDataSource';
+import { getErrorMessage } from '../utils/errorHandler';
 
 // Manual dependency injection setup (Singleton instances)
-const dataSource = new MockProductDataSource();
+const dataSource = new ProductRemoteDataSource();
 const repository = new ProductRepositoryImpl(dataSource);
 
 const getProductsUseCase = new GetProductsUseCase(repository);
@@ -37,7 +38,7 @@ export const useProductStore = create<ProductState>((set) => ({
             const products = await getProductsUseCase.execute();
             set({ products, loading: false });
         } catch (err: any) {
-            set({ error: err.message || 'Failed to fetch products', loading: false });
+            set({ error: getErrorMessage(err), loading: false });
         }
     },
 
@@ -50,7 +51,7 @@ export const useProductStore = create<ProductState>((set) => ({
                 loading: false
             }));
         } catch (err: any) {
-            set({ error: err.message || 'Failed to add product', loading: false });
+            set({ error: getErrorMessage(err), loading: false });
             throw err;
         }
     },
@@ -66,7 +67,7 @@ export const useProductStore = create<ProductState>((set) => ({
                 loading: false
             }));
         } catch (err: any) {
-            set({ error: err.message || 'Failed to update product', loading: false });
+            set({ error: getErrorMessage(err), loading: false });
             throw err;
         }
     },
@@ -80,7 +81,7 @@ export const useProductStore = create<ProductState>((set) => ({
                 loading: false
             }));
         } catch (err: any) {
-            set({ error: err.message || 'Failed to delete product', loading: false });
+            set({ error: getErrorMessage(err), loading: false });
             throw err;
         }
     }

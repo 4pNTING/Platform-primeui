@@ -1,11 +1,11 @@
 import { Product } from '../../domain/entities/Product';
 import { IProductRepository } from '../../domain/repositories/IProductRepository';
-import { MockProductDataSource } from '../datasources/MockProductDataSource';
+import { ProductRemoteDataSource } from '../datasources/ProductRemoteDataSource';
 
 export class ProductRepositoryImpl implements IProductRepository {
-    private dataSource: MockProductDataSource;
+    private dataSource: ProductRemoteDataSource;
 
-    constructor(dataSource: MockProductDataSource) {
+    constructor(dataSource: ProductRemoteDataSource) {
         this.dataSource = dataSource;
     }
 

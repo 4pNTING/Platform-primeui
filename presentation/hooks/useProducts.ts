@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { Product } from '../../domain/entities/Product';
 import { GetProductsUseCase } from '../../domain/usecases/GetProductsUseCase';
 import { ProductRepositoryImpl } from '../../data/repositories/ProductRepositoryImpl';
-import { MockProductDataSource } from '../../data/datasources/MockProductDataSource';
+import { ProductRemoteDataSource } from '../../data/datasources/ProductRemoteDataSource';
+import { getErrorMessage } from '../utils/errorHandler';
 
 // Manual dependency injection setup
-const dataSource = new MockProductDataSource();
+const dataSource = new ProductRemoteDataSource();
 const repository = new ProductRepositoryImpl(dataSource);
 const getProductsUseCase = new GetProductsUseCase(repository);
 
@@ -21,7 +22,7 @@ export const useProducts = () => {
                 const data = await getProductsUseCase.execute();
                 setProducts(data);
             } catch (err) {
-                setError('Failed to load products');
+                setError(getErrorMessage(err));
             } finally {
                 setLoading(false);
             }

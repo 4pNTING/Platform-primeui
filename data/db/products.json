@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "name": "Clean Architecture Course",
+    "price": 199.99,
+    "description": "Learn how to structure your enterprise apps correctly with Clean Architecture.",
+    "imageUrl": "https://placehold.co/200x120?text=Clean+Arch"
+  },
+  {
+    "id": "2",
+    "name": "React 18 Mastery",
+    "price": 149.50,
+    "description": "Advanced patterns in React 18 including server components and suspense.",
+    "imageUrl": "https://placehold.co/200x120?text=React+18"
+  },
+  {
+    "id": "3",
+    "name": "Next.js 13 App Router Guide",
+    "price": 99.00,
+    "description": "The complete handbook to building applications with the Next.js App Router.",
+    "imageUrl": "https://placehold.co/200x120?text=Next.js+13"
+  }
+]
