@@ -42,6 +42,11 @@ const AppMenu = () => {
                     to: '/pages/crud'
                 },
                 {
+                    label: 'Products (Zustand CRUD)',
+                    icon: 'pi pi-fw pi-shopping-bag',
+                    to: '/pages/products'
+                },
+                {
                     label: 'Empty',
                     icon: 'pi pi-fw pi-circle-off',
                     to: '/pages/empty'
