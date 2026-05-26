@@ -47,6 +47,11 @@ const AppMenu = () => {
                     to: '/pages/empty'
                 },
                 {
+                    label: 'Clean Example',
+                    icon: 'pi pi-fw pi-code',
+                    to: '/pages/clean-example'
+                },
+                {
                     label: 'Help',
                     icon: 'pi pi-fw pi-question-circle',
                     to: '/pages/help'
